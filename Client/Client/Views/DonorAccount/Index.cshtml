@@ -1,0 +1,181 @@
+﻿@model Client.Models.Donor
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<hr />
+<section>
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg-10 p-0 pt-1 pb-1" style="margin:auto;background-color:#C92626;"><h4 class="text-center" style="color:white;">Your Profile</h4></div>
+            <div class="col-lg-10" style="margin:auto;border:1px solid #ced4da;border-top:0px;padding:20px 30px">
+                <h5 class="text-center mb-3" style="color:#28a745;">@ViewBag.Ok</h5>
+                <form asp-action="Edit" asp-controller="DonorAccount">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="donorId" class="form-control" hidden="hidden" />
+                    <input id="cityId" class="form-control" value="@ViewBag.cityDefault"  hidden="hidden"/>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="donorName" class="control-label"></label>
+                                <input asp-for="donorName" class="form-control" />
+                                <span asp-validation-for="donorName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label asp-for="age" class="control-label"></label>
+                                <input asp-for="age" class="form-control" />
+                                <span asp-validation-for="age" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label asp-for="bloodId" class="control-label"></label>
+                                <select asp-for="bloodId" asp-items="@ViewBag.bloods" class="form-control" disabled></select>
+                                <span asp-validation-for="bloodId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="email" class="control-label"></label>
+                                <input asp-for="email" class="form-control" />
+                                <span asp-validation-for="email" class="text-danger">@ViewBag.checkEmail</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label asp-for="phone" class="control-label"></label>
+                                <input asp-for="phone" class="form-control" />
+                                <span asp-validation-for="phone" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label asp-for="birthday" class="control-label"></label>
+                                <input asp-for="birthday" class="form-control" />
+                                <span asp-validation-for="birthday" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="address" class="control-label"></label>
+                                <input asp-for="address" class="form-control" />
+                                <span asp-validation-for="address" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label ">City</label>
+                                <select asp-items="@ViewBag.cities" id="cities" style="width:100%;">
+                                    <option selected="selected" value="0">Select City </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label ">District</label>
+                                <select asp-for="districtId" asp-items="@ViewBag.districts" id="districts" style="width:100%;">
+                                    <option selected="selected" value="0">Select District </option>
+                                </select>
+                                <span asp-validation-for="districtId" id="validateDistrict" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label asp-for="password" class="control-label"></label>
+                                <input asp-for="password" class="form-control" />
+                                <span asp-validation-for="password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label asp-for="weight" class="control-label"></label>
+                                <input asp-for="weight" class="form-control" />
+                                <span asp-validation-for="weight" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group ">
+                                <label asp-for="gender" class="control-label"></label>
+                                <div class="form-group row" style="padding-left:15px;padding-top:7px;">
+
+                                    <div class="form-check col-lg-6">
+                                        <input class="form-check-input" asp-for="gender" type="radio" value="true" id="defaultCheck1" checked="checked">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check col-lg-6">
+                                        <input class="form-check-input" asp-for="gender" type="radio" value="false" id="defaultCheck2">
+                                        <label class="form-check-label" for="defaultCheck2">
+                                            Female
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <button type="submit" style="margin:auto;" class="btn btn-info">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    window.onload = function exampleFunction() {
+       
+        var cityDefault = $('#cityId').val();
+        $('#cities').val(cityDefault);
+    }
+
+   
+</script>
+<script>
+    $('#cities').on('change', function () {
+
+        var idcities = $(this).children(":selected").attr("value");
+        $('#cityId').val(idcities);
+        document.getElementById('districts').innerHTML = '';
+
+        $.ajax({
+            url: "/BloodSeek/SearchDistrict?key=" + idcities,
+            type: "post",
+            contentType: "html",
+            success: function (response) {
+                if ((Object.keys(response).length) == 0) {
+                    var _tr = '<option value="' + value.districtId + '">' + value.districtName + ' </option>';
+                    $('#districts').append(_tr);
+                } else {
+                   
+                    console.log(response);
+                    $.each(response, function (index, value) {
+                        var _tr = '<option value="' + value.districtId + '">' + value.districtName + ' </option>';
+                        $('#districts').append(_tr);
+                    });
+
+                }
+
+            }
+        });
+    });
+</script>
+
+

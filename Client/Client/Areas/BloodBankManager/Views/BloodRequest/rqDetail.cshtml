@@ -1,0 +1,134 @@
+﻿@model Client.Models.RequestToBloodBankModel
+
+@{
+    ViewData["Title"] = "rqDetail";
+    Layout = "~/Areas/BloodBankManager/Views/Shared/Admin.cshtml";
+}
+
+<div class="row pt-2 m-0">
+    <div class="col-12">
+        <h3 class="text-center m-0"> Request Detail </h3>
+    </div>
+    <hr class="col-12" />
+    <div class="col-6">
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fullname)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.fullname)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.gender)
+            </dt>
+            @if (Model.gender == true)
+            {
+                <dd>
+                    Male
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    Female
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.birthday)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.birthday)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.phone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.phone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.amount)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.amount)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.note)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.note)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.hospitaltreatment)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.hospitaltreatment)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
+            @if (Model.status == 0)
+            {
+                <dd style="color:yellow;font-weight:bold;">
+                    Unconfirmed
+                </dd>
+            }
+            else if (Model.status == 1)
+            {
+                <dd style="color:green;font-weight:bold;">
+                    Acept
+                </dd>
+            }
+            else
+            {
+                <dd style="color:red;font-weight:bold;">
+                    Denie
+                </dd>
+            }
+
+            <dt>
+                @Html.DisplayNameFor(model => model.bloodName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.bloodName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.expected_date)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.expected_date)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.create_at)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.create_at)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.update_at)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.update_at)
+            </dd>
+        </dl>
+    </div>
+   
+    </div>

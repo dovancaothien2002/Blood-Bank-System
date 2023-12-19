@@ -1,0 +1,153 @@
+﻿@model Client.Models.DonationRequest
+
+@{
+    ViewData["Title"] = "FormDonateToBloodBank";
+}
+<section>
+   
+    <hr />
+    <div class="container">
+       
+        <div class="row mb-3">
+           
+            <form asp-action="SendAppointmentToBloodBank" asp-controller="DonateBlood" method="post" style="width:100%;" id="SendAppointmentToBloodBank">
+                <div class="col-lg-10 p-0 pt-1 pb-1" style="margin:auto;background-color:#C92626;"><h4 class="text-center" style="color:white;">Appointment To Blood Bank</h4></div>
+                <div class="col-lg-10" style="margin:auto;border:1px solid #ced4da;border-top:0px;padding:30px 30px">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label class="control-label">Full Name</label>
+                                <input type="text" class="form-control" value="@ViewBag.donorName" disabled="disabled" />
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label class="control-label">Blood Group</label>
+                                <input type="text" class="form-control" value="@ViewBag.donorBlood"  disabled="disabled"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label class="control-label">Age</label>
+                                <input type="text" class="form-control" value="@ViewBag.donorAge"  disabled="disabled"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label asp-for="amount" class="control-label"></label>
+                                <input asp-for="amount" class="form-control" type="number"  min="0" value="0"/>
+                                <span asp-validation-for="amount" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <input type="text" class="form-control" value="@ViewBag.donorEmail"  disabled="disabled"/>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label">Phone</label>
+                                <input type="text" class="form-control" value="@ViewBag.donorPhone" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label asp-for="expected_date" class="control-label"></label>
+                                <input asp-for="expected_date" class="form-control" />
+                                <span asp-validation-for="expected_date" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="form-group">
+                                <label class="control-label">Address</label>
+                                <input type="text" class="form-control" value="@ViewBag.donorAddress"  disabled="disabled"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="note" class="control-label"></label>
+                                <textarea asp-for="note" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="note" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-5" style="height:100%;padding-top:30px;">
+                            <div class="card p-3">
+                                <p style="line-height:16px;"><b> Blood Bank : </b> @ViewBag.bbName</p>
+                                <p style="line-height:16px;"> Address : jkasjdkas askdjsakdj @ViewBag.bbAddress</p>
+                                <p style="line-height:16px;"> Hotline : @ViewBag.bbHotline</p>
+                                <p style="line-height:16px;"> Email : @ViewBag.bbEmail</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <input asp-for="donorId" class="form-control" id="inputDonorId" value="@ViewBag.donorId" hidden="hidden" />
+
+                    <input asp-for="bbId" class="form-control" id="inputBloodBankId" hidden="hidden" />
+
+                    <div class="row mt-3">
+                        <a onclick="checkAppointment()" class="btn" style="margin:auto;color:white;background-color:#C92626;">Submit</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="SpamSendDonationRq" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered col-lg-4 text-center" role="document">
+            <div class="modal-content p-3">
+
+                <div class="modal-body">
+                    <h3> You already have a donation request to this Blood Bank today</h3>
+                </div>
+                <div class="modal-body" style="padding: 20px 60px;">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Exit</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+</section>
+<script>
+    function checkAppointment() {
+
+        var d = document.getElementById("inputDonorId");
+        var donorId = d.value;
+
+        var bb = document.getElementById("inputBloodBankId");
+        var bbId = bb.value;
+
+        $.ajax({
+            url: "/DonateBlood/checkApointmentToBloodBank?bloodBankId=" + bbId + "&dId=" + donorId,
+            type: 'POST',
+            async: false,
+            dataType: "json",
+            //data: JSON.stringify(dataobject),
+            contentType: "application/json;charset=utf-8",
+            success: function (response) {
+                if (response == null) {
+                   
+                    var form = document.getElementById("SendAppointmentToBloodBank");
+                    form.submit();
+                } else {
+                  
+                    $("#SpamSendDonationRq").modal('show');
+
+                }
+
+            }
+        });
+    }
+</script>
+
+
+

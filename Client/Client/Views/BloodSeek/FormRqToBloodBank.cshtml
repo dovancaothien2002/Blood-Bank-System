@@ -1,0 +1,218 @@
+﻿@model Client.Models.RequestToBloodBank
+
+@{
+    ViewData["Title"] = "FormRqToBloodBank";
+}
+<section>
+
+    <hr />
+    <div class="container">
+      
+        <div class="row mb-3">
+            <form asp-action="SendRequestToBloodBank" asp-controller="BloodSeek" method="post" style="width:100%;" id="FormRqToBloodBank">
+                <div class="col-lg-10 p-0 pt-1 pb-1" style="margin:auto;background-color:#C92626;"> <h4 class="text-center" style="color:white;">Request To Blood Bank</h4></div>
+                <div class="col-lg-10" style="margin:auto;border:1px solid #ced4da;border-top:0px;padding:30px 30px">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="fullname" class="control-label"></label>
+                                <input asp-for="fullname" class="form-control" />
+                                <span asp-validation-for="fullname" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="email" class="control-label"></label>
+                                <input asp-for="email" class="form-control" id="inputEmail" />
+                                <span asp-validation-for="email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="address" class="control-label"></label>
+                                <input asp-for="address" class="form-control" />
+                                <span asp-validation-for="address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="phone" class="control-label"></label>
+                                <input asp-for="phone" class="form-control" />
+                                <span asp-validation-for="phone" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="amount" class="control-label"></label>
+                                <input asp-for="amount" type="number" value="0" class="form-control" id="inputAmount" min="0" />
+                                <span asp-validation-for="amount" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="gender" class="control-label col-lg-12 p-0"></label>
+                            <div class="form-group row" style="padding-left:14px;padding-top:7px;">
+
+                                <div class="form-check col-lg-6">
+                                    <input class="form-check-input" asp-for="gender" type="radio" value="true" id="defaultCheck1" checked="checked">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check col-lg-6">
+                                    <input class="form-check-input" asp-for="gender" type="radio" value="false" id="defaultCheck2">
+                                    <label class="form-check-label" for="defaultCheck2">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="birthday" class="control-label"></label>
+                                <input asp-for="birthday" class="form-control" />
+                                <span asp-validation-for="birthday" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="expected_date" class="control-label"></label>
+                                <input asp-for="expected_date" class="form-control" />
+                                <span asp-validation-for="expected_date" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="hospitaltreatment" class="control-label"></label>
+                        <input asp-for="hospitaltreatment" class="form-control" />
+                        <span asp-validation-for="hospitaltreatment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="note" class="control-label"></label>
+                        <textarea asp-for="note" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="note" class="text-danger"></span>
+                    </div>
+
+
+                   
+                        <input asp-for="bloodId" class="form-control" id="inputBloodId" hidden="hidden"/>
+                     
+                   
+                        <input asp-for="bbId" class="form-control" id="inputBloodBankId" hidden="hidden"/>
+                      
+                    <div class="row mt-5">
+                        <a onclick="checkEmail()" class="btn" style="margin:auto;color:white;background-color:#C92626;">Submit</a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="SendRqOrNot" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered col-lg-4 text-center" role="document">
+        <div class="modal-content p-3">
+
+            <div class="modal-body">
+                <h3> Currently the blood bank does not have the required amount of blood. Would you like to continue submitting your request?</h3>
+            </div>
+            <div class="modal-body" style="padding: 20px 60px;">
+                <button type="button" class="btn btn-secondary" style="float:left" data-dismiss="modal">No</button>
+                <a onclick="submitForm()" class="btn btn-primary" style="float:right">Yes </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="SpamSendRq" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered col-lg-4 text-center" role="document">
+        <div class="modal-content p-3" style="border: 1px solid #C92626;">
+
+            <div class="modal-body">
+                <h5> You already have a request to this blood bank today</h5>
+            </div>
+            <div class="modal-body" style="padding: 20px 60px;">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Exit</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<script>
+
+    function submitForm() {
+        var form = document.getElementById("FormRqToBloodBank");
+        form.submit();
+    }
+
+    function checkAmount() {
+        var qty = document.getElementById("inputAmount");
+        var checkA = qty.value;
+        var b = document.getElementById("inputBloodId");
+        var bloodId = b.value;
+        var bb = document.getElementById("inputBloodBankId");
+        var bbId = bb.value;
+        $.ajax({
+            url: "/BloodSeek/checkBloodStock?bbId=" + bbId + "&bloodId=" + bloodId,
+            type: "post",
+            async: false,
+            contentType: "html",
+            success: function (response) {
+
+                if (checkA > response.quantity) {
+                  
+                    $("#SendRqOrNot").modal('show');
+                } else {
+                   
+                    var form = document.getElementById("FormRqToBloodBank");
+                    form.submit();
+                }
+            }
+        });
+    }
+    function checkEmail() {
+        
+        var b = document.getElementById("inputEmail");
+        var donorEmail = b.value;
+      
+        var bb = document.getElementById("inputBloodBankId");
+        var bbId = bb.value;
+
+        $.ajax({
+            url: "/BloodSeek/checkRequestToBloodBankEmail?bloodBankId=" + bbId + "&donorEmail=" + donorEmail,
+            type: 'POST',
+            async: false,
+            dataType: "json",
+            //data: JSON.stringify(dataobject),
+            contentType: "application/json;charset=utf-8",
+            success: function (response) {
+                if (response == null) {
+                   
+                  
+                    checkAmount();
+                  
+                } else {
+                   
+                    $("#SpamSendRq").modal('show');
+                   
+                }
+              
+            }
+        });
+    }
+</script>
+
+
+

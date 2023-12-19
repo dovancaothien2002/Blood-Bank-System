@@ -1,0 +1,211 @@
+﻿
+@{
+    ViewData["Title"] = "DonateToBloodBank";
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    select option {
+        color: black;
+    }
+
+    .modal-body .col-lg-6 {
+        padding: 0px 20px;
+    }
+</style>
+<section class="breadcrumb-section set-bg" data-setbg="/webuser/img/minibanner.jpg" style="background-image: url(&quot;img/breadcrumb.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Want To Donate Blood</h2>
+                    <div class="breadcrumb__option">
+                        <a href="./index.html">Home</a>
+                        <span>Find Blood Bank</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- start service -->
+<section id="bloodbank" style="background-color:white;">
+    <div class="container">
+      
+        <hr />
+        <div class="row" style="margin-top: 1rem;">
+            <div class="col-lg-3 mr-1"></div>
+
+            <select asp-items="@ViewBag.cities" id="cities" class="col-lg-2 p-2 mr-4">
+                <option selected="selected" value="0">Select Blood Group </option>
+            </select>
+
+            <select id="district" class="col-lg-2 p-2 mr-4">
+                <option selected="selected" value="0">Select District </option>
+            </select>
+
+            <a class="btn col-lg-1 m-1 ml-4" onclick="searchBloodBank()" style="background-color:#C92626;color:white">Search</a>
+
+        </div>
+
+
+        <hr />
+        <h2 id="result1"></h2>
+        <hr />
+        <table id="table" class="table table-bordered" border="1" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Blood Bank</th>
+                    <th>Address</th>
+                    <th>Information</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+</section>
+<!-- end servie -->
+<!-- Modal -->
+<div class="modal fade" id="LoginOrNot" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered col-lg-4 text-center" role="document">
+        <div class="modal-content p-3">
+
+            <div class="modal-body">
+                <h3> Please login before make an apointment to blood bank</h3>
+            </div>
+            <div class="modal-body" style="padding: 20px 60px;">
+                <button type="button" class="btn btn-secondary" style="float:left" data-dismiss="modal">Close</button>
+                <a asp-action="Index" asp-controller="Login" asp-route-returnUrl="@Context.Request.Path" class="btn btn-primary" style="float:right">Login Now </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('table').hide();
+    
+    function login() {
+        $("#LoginOrNot").modal('show');
+    }
+
+    function checkDonorAccount() {
+        var i = false;
+        $.ajax({
+            async: false,
+            url: "/Login/CheckSession",
+            type: "post",
+            contentType: "html",
+            success: function (response) {
+                if (response != null) {
+                    console.log(response);
+                    i = true;
+                }
+            }
+        });
+        return i;
+    }
+
+    $('#cities').on('change', function () {
+
+        var idcities = $(this).children(":selected").attr("value");
+        document.getElementById('district').innerHTML = '<option selected="selected" value="0">Select District  </option>';
+
+        $.ajax({
+            url: "/BloodSeek/SearchDistrict?key=" + idcities,
+            type: "post",
+            contentType: "html",
+            success: function (response) {
+                if ((Object.keys(response).length) == 0) {
+                    document.getElementById('result1').innerHTML = "No district information found";
+                } else {
+                    document.getElementById('result1').innerHTML = "";
+                    console.log(response);
+                    $.each(response, function (index, value) {
+                        var _tr = '<option value="' + value.districtId + '">' + value.districtName + ' </option>';
+                        $('#district').append(_tr);
+                    });
+
+                }
+
+            }
+        });
+    });
+    function searchBloodBank() {
+
+        $('table').hide();
+        $('tbody').empty();
+        var check = checkDonorAccount();
+      
+        var d = document.getElementById("district");
+        var districtId = d.value;
+        if (districtId == 0) {
+            alert("Please select enough information");
+        } else {
+
+            $.ajax({
+                url: "/DonateBlood/searchBloodBank?districtId=" + districtId,
+                type: "post",
+                contentType: "html",
+                success: function (response) {
+
+                    console.log(response);
+                    if ((Object.keys(response).length) == 0) {
+                        document.getElementById('result1').innerHTML = "Sorry blood bank are not availabe with the following blood group and area";
+                    } else {
+
+                        document.getElementById('result1').innerHTML = "";
+
+                        $('table').show();
+
+                        console.log(Object.keys(response).length);
+
+                        $.each(response, function (index, value) {
+                            if (check == true) {
+                                var _tr = '<tr>' +
+                                    '<td>' + value.bbId + '</td>' +
+                                    '<td>' + value.bbName + '</td>' +
+                                    '<td>  ' + value.address + ', <br> Celendar: ' + value.calendar + '</td>' +
+
+                                    '<td> Email: ' + value.email + ', <br> Hotline: ' + value.hotline + '</td>' +
+
+                                    '<td> <a style="color:black;" href="/FormDonateToBloodBank/' + value.bbId + '" class="disabled" > Donate </a></td>' +
+                                    '</tr>';
+                            } else {
+                                var _tr = '<tr>' +
+                                    '<td>' + value.bbId + '</td>' +
+                                    '<td>' + value.bbName + '</td>' +
+                                    '<td>  ' + value.address + ', <br> Celendar: ' + value.calendar + '</td>' +
+
+                                    '<td> Email: ' + value.email + ', <br> Hotline: ' + value.hotline + '</td>' +
+
+                                    '<td> <a class="login" style="color:black;" onclick="login();"> Donate </a></td>' +
+                                    '</tr>';
+                            }
+                            $('tbody').append(_tr);
+                        });
+
+
+                    }
+
+                }
+            });
+        }
+
+    }
+
+
+
+</script>
+
+
+

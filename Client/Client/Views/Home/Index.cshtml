@@ -1,0 +1,190 @@
+﻿<style>
+    .bg {
+       
+        border-radius: 10px;
+      
+    }
+</style> 
+<!-- Hero Section Begin -->
+<section class="hero p-0">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-12" style="padding:0;">
+
+                <div class="hero__item set-bg" data-setbg="/webuser/img/minibanner.jpg">
+                    <div class="hero__text">
+                      
+                        <h2 style="color:white">Donate BLood <br />Save Life !</h2>
+                        <p>Your blood saves lives. Make a difference</p>
+                        <a asp-controller="DonateBlood" asp-action="DonateToBloodBank" class="primary-btn">Donate Now !</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Blog Section Begin -->
+<section class="from-blog spad">
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 ">
+                <div class="blog__item text-center p-4 bg" style="background-color: #af2c2c;">
+                    <i class="fa fa-tint fa-4x" aria-hidden="true" style="color:white;"></i>
+                    <h5 class="mt-3"><a asp-controller="BloodSeek" asp-action="RequestToDonor" style="color:white;font-weight:bold;">Looking For Blood Donors </a></h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 ">
+                <div class="blog__item text-center p-4 bg" style="background-color: #0b9c41;">
+                    <i class="fa fa-user-o fa-4x" aria-hidden="true" style="color:white;"></i>
+                    <h5 class="mt-3"><a asp-controller="Login" asp-action="Index" style="color:white;font-weight:bold;"> Donor Login </a></h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 ">
+                <div class="blog__item text-center p-4 bg" style="background-color: #d8b402;">
+                    <i class="fa fa-hospital-o fa-4x" aria-hidden="true" style="color:white;"></i>
+                    <h5 class="mt-3"><a asp-controller="BloodSeek" asp-action="RequestToBloodBank" style="color:white;font-weight:bold;">Looking For Blood Bank </a></h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 ">
+                <div class="blog__item text-center p-4 bg" style="background-color: #0f5faa;">
+                    <i class="fa fa-user-o fa-4x" aria-hidden="true" style="color:white;"></i>
+                    <h5 class="mt-3"><a asp-controller="DonateBlood" asp-action="Register" style="color:white;font-weight:bold;">Donor Register   </a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container mb-5">
+        <div class="col-12 mb-5 p-5" style="background-color:#e5e5e5;">
+            <h3 class="text-center" style="font-weight:600;margin-bottom:20px">Our Missions</h3>
+            <h5>"Through effective outreach to donors, continual development of biomedical expertise, and brand-building partnerships with the community, blood drive sponsors, and health care facilities, this website connects those who need blood with those generous volunteers who give."</h5>
+        </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a style="color:black;" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Blood types</a>
+            </li>
+            <li class="nav-item">
+                <a style="color:black;" class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">How blood is used</a>
+            </li>
+            <li class="nav-item">
+                <a style="color:black;" class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Blood Donation</a>
+            </li>
+        </ul>
+        <div class="tab-content mb-5" id="myTabContent">
+            <div class="tab-pane fade show active col-12 pt-3" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <h3>What are the rarest blood types?</h3>
+                <p>There are eight main blood types but some are rarer than others. The list below shows the percentage of donors with each blood type:</p>
+                <ul style="margin-left: 20px;">
+                    <li>O positive: 35%</li>
+                    <li>O negative: 13%</li>
+                    <li>A positive: 30%</li>
+                    <li>A negative: 8%</li>
+                    <li>B positive: 8%</li>
+                    <li>B negative: 2%</li>
+                    <li>AB positive: 2%</li>
+                    <li>AB negative: 1%</li>
+                </ul>
+                <h3 class="mt-3 mb-1">Which blood types are compatible?</h3>
+                <div class="row">
+                    <div class="col-7">
+                        <p>You can receive blood from a donor with the same blood type as you.</p>
+                        <p>You can also receive blood from a donor with a compatible blood type.</p>
+                        <p>Similarly, a person with a different blood type to you may be able to safely receive your blood.</p>
+                        <p> O negative blood is known as the universal blood type because it is safe for everyone to receive O negative red cells.</p>
+                    </div>
+
+                    <div class="col-5">
+                        <img width="100%" src="~/images/bloodgroup.png" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <h3 class="mt-3">Blood transfusions</h3>
+                <p>Donated blood or components are given to a patient in a blood transfusion. Blood transfusions are given via an intravenous line into a blood vessel.</p>
+                <p>
+                    Usage varies between hospitals depending on their particular specialties.
+
+                    We work closely with hospitals to make sure valuable blood donations are used appropriately.
+
+                    The demand for blood from hospitals has fallen due to increased efficiency, but new donors are always needed to make sure there is enough blood to treat those who need it.
+                </p>
+                <h3 class="mt-3 mb-1">Blood transfusions for people who are dying</h3>
+                <p>
+                    Blood can be vital for people with medical conditions or who are having surgery. But blood transfusions can also improve the quality of life for people whose illness has no cure.
+                </p>
+                <p>
+                    These vital transfusions give patients a better quality of life and the energy and ability to enjoy this precious, final time with their families
+                </p>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <h3 class="mt-3">Why Donate Blood </h3>
+                <p>The most precious gift that one can give to another person is the gift of life i.e. blood. It is the essence of life.</p>
+                <p>
+                    Your blood saves more than one life when it is separated into its components (red blood cells, plasma etc.).
+
+                    Blood is needed regularly for patients with diseases such as thalassemia and hemophilia, and also for the treatment of injuries after an accident, major surgeries, anemia, etc.
+
+                    It improves your health.
+                </p>
+                <h3 class="mt-3 mb-1">Benefits Of Donating Blood</h3>
+                <p>
+                    Did you know that people who donate blood are 88% less likely to suffer a heart attack and 33% less likely to acquire any type of cardiovascular disease.
+                </p>
+                <p>
+                    When you donate blood, it removes 225 to 250 milligrams of iron from your body, hence reducing the risk of heart disease.
+                </p>
+                <h3 class="mt-3 mb-1">Who can donate blood ?</h3>
+                <p>
+                    Age : 16 - 60 years old.
+                </p>
+                <p>
+                    Weight : Aleast 50 kilos
+                </p>
+                <p>
+                    Heart rate : 60 - 100 beats per munite,regular rhythm.
+                </p>
+                <p>
+                    Passed the physical and health history assessments.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5" style="margin:auto">
+                <h3 class="text-center" style="font-weight:600;">Our Team</h3>
+                <hr class="col-12" />
+            </div>
+            <div class="categories__slider owl-carousel">
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="/images/user.png" style="border:1px solid #e5e5e5">
+                        <h5 style="bottom:10px;"><a href="#">Cao Thien</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="/images/user.png" style="border:1px solid #e5e5e5">
+                        <h5 style="bottom:10px;"><a href="#">Thanh Dat</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="/images/user.png" style="border:1px solid #e5e5e5">
+                        <h5 style="bottom:10px;"><a href="#">Ngoc Anh</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="/images/user.png" style="border:1px solid #e5e5e5">
+                        <h5 style="bottom:10px;"><a href="#">Thao Anh</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Categories Section End -->

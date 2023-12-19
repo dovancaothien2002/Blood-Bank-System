@@ -1,0 +1,70 @@
+D:\BigSem3\Services\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+D:\BigSem3\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.json
+D:\BigSem3\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.dev.json
+D:\BigSem3\Services\Services\bin\Debug\netcoreapp2.1\Services.dll
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cache
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cs
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorTargetAssemblyInfo.cache
+D:\BigSem3\Services\Services\bin\Debug\netcoreapp2.1\Services.pdb
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.dll
+D:\BigSem3\Services\Services\obj\Debug\netcoreapp2.1\Services.pdb
+D:\ASP.NET Core\BigSem33\Services\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+D:\ASP.NET Core\BigSem33\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.json
+D:\ASP.NET Core\BigSem33\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.dev.json
+D:\ASP.NET Core\BigSem33\Services\Services\bin\Debug\netcoreapp2.1\Services.dll
+D:\ASP.NET Core\BigSem33\Services\Services\bin\Debug\netcoreapp2.1\Services.pdb
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cache
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cs
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorTargetAssemblyInfo.cache
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.dll
+D:\ASP.NET Core\BigSem33\Services\Services\obj\Debug\netcoreapp2.1\Services.pdb
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.json
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.dev.json
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.dll
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.pdb
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cache
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cs
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorTargetAssemblyInfo.cache
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.dll
+C:\Users\Admin\Desktop\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.pdb
+D:\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+D:\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.json
+D:\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.dev.json
+D:\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.dll
+D:\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.pdb
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cache
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cs
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorTargetAssemblyInfo.cache
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.dll
+D:\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.pdb
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.json
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.runtimeconfig.dev.json
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.dll
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\bin\Debug\netcoreapp2.1\Services.pdb
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cache
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorAssemblyInfo.cs
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.RazorTargetAssemblyInfo.cache
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.dll
+D:\C#\BloodBank_Group3\Blood Bank System\Services\Services\obj\Debug\netcoreapp2.1\Services.pdb

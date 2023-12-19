@@ -1,0 +1,163 @@
+﻿@model Client.Models.RequestToDonor
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    select option {
+        color: black;
+    }
+
+    .modal-body .col-lg-6 {
+        padding: 0px 20px;
+    }
+</style>
+<section class="breadcrumb-section set-bg" data-setbg="/webuser/img/minibanner.jpg" style="background-image: url(&quot;img/breadcrumb.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Looking For Blood</h2>
+                    <div class="breadcrumb__option">
+                        <a href="./index.html">Home</a>
+                        <span>Find Donor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- start service -->
+<section id="bloodbank" style="background-color:white;">
+    <div class="container">
+        <hr />
+        <div class="row" style="margin-top: 1rem;">
+            <div class="col-lg-2 mr-1"></div>
+            <select asp-items="@ViewBag.bloods" id="bloods" class="col-lg-2 p-2 mr-4">
+                <option selected="selected" value="0">Select Blood Group </option>
+            </select>
+            <select asp-items="@ViewBag.cities" id="cities" class="col-lg-2 p-2 mr-4">
+                <option selected="selected" value="0">Select City </option>
+            </select>
+
+            <select id="district" class="col-lg-2 p-2 mr-4">
+                <option selected="selected" value="0" districtName="">Select District </option>
+            </select>
+
+            <a class="btn col-lg-1 m-1 ml-4" onclick="searchDonor()" style="background-color:#C92626;color:white">Search</a>
+
+        </div>
+
+
+        <hr />
+
+        <h5 id="result1" class="text-center"></h5>
+
+
+        <table id="table" class="table table-bordered" border="1" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Full Name</th>
+                    <th>Address </th>
+                    <th>Information</th>
+                    <th>Blood Group</th>
+
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody></tbody>
+        </table>
+        <hr />
+    </div>
+
+</section>
+<!-- end servie -->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('table').hide();
+
+    $('#cities').on('change', function () {
+
+        var idcities = $(this).children(":selected").attr("value");
+        document.getElementById('district').innerHTML = '<option selected="selected" value="0"> Select District </option>';
+
+        $.ajax({
+            url: "/BloodSeek/SearchDistrict?key=" + idcities,
+            type: "post",
+            contentType: "html",
+            success: function (response) {
+                if ((Object.keys(response).length) == 0) {
+                    document.getElementById('result1').innerHTML = "No district information found";
+                } else {
+                    document.getElementById('result1').innerHTML = "";
+                    console.log(response);
+                    $.each(response, function (index, value) {
+                        var _tr = '<option value="' + value.districtId + '">' + value.districtName + ' </option>';
+                        $('#district').append(_tr);
+                    });
+
+                }
+
+            }
+        });
+    });
+
+    function searchDonor() {
+
+        $('table').hide();
+        $('tbody').empty();
+        var b = document.getElementById("bloods");
+        var bloodId = b.value;
+        $('#inputBloodId').val(bloodId);
+        var d = document.getElementById("district");
+        var districtId = d.value;
+        var districtName = d.options[d.selectedIndex].text;
+        if (bloodId == 0 || districtId == 0) {
+            alert("Please select enough information ");
+        } else {
+
+            $.ajax({
+                url: "/BloodSeek/searchDonor?districtId=" + districtId + "&bloodId=" + bloodId,
+                type: "post",
+                contentType: "html",
+                success: function (response) {
+                    // alert("Nhóm máu : " + bloodId + "  |  Quận Huyện : " + districtId);
+                    console.log(response);
+                    if ((Object.keys(response).length) == 0) {
+                        document.getElementById('result1').innerHTML = "Sorry donors are not availabe with the following blood group and area";
+                    } else {
+                        document.getElementById('result1').innerHTML = "";
+                        if ((Object.keys(response).length) == 0) {
+                            $('table').hide();
+                            document.getElementById('result1').innerHTML = "Sorry donors are not availabe with the following blood group and area";
+                        } else {
+                            $('table').show();
+
+                            console.log(Object.keys(response).length);
+                            $.each(response, function (index, value) {
+                                var _tr = '<tr>' +
+                                    '<td>' + value.donorId + '</td>' +
+                                    '<td>' + value.donorName + '</td>' +
+                                    '<td> Address: ' + value.address + '</td>' +
+                                    '<td> Email: ' + value.email + ', <br> Hotline: ' + value.phone + '</td>' +
+                                    '<td>' + value.bloodName + '</td>' +
+                                    '<td> <a id="MakeForm" style="color:black;" href="/FormRqToDonor/' + value.donorId + '&' + value.bloodId +'"> Choose </a></td>' +
+                                    '</tr>';
+                                $('tbody').append(_tr);
+                            });
+                        }
+
+                    }
+
+                }
+            });
+        }
+
+    }
+</script>
+

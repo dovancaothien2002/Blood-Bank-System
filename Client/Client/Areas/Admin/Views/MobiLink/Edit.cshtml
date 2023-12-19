@@ -1,0 +1,94 @@
+﻿@model Client.Models.MobiLinkRequest
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+<hr />
+<h4 class="text-center">MobiLink Notification</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10" style="margin:auto">
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-6 row pl-3 pr-3">
+                    <input asp-for="mlrId" class="form-control" hidden="hidden"/>
+                    <div class="form-group col-12">
+                        <label asp-for="fullname" class="control-label"></label>
+                        <input asp-for="fullname" class="form-control" />
+                        <span asp-validation-for="fullname" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label asp-for="email" class="control-label"></label>
+                        <input asp-for="email" class="form-control" />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12">
+                        <label asp-for="phone" class="control-label"></label>
+                        <input asp-for="phone" class="form-control" />
+                        <span asp-validation-for="phone" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="bloodId" class="control-label"></label>
+                            <select asp-for="bloodId" asp-items="@ViewBag.bloods" class="form-control"></select>
+
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="expected_date" class="control-label"></label>
+                            <input asp-for="expected_date" class="form-control" />
+                            <span asp-validation-for="expected_date" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label asp-for="status" class="control-label col-lg-12 p-0"></label>
+                        <div class="form-group row" style="padding-left:14px;padding-top:7px;">
+
+                            <div class="form-check col-lg-6">
+                                <input class="form-check-input" asp-for="status" type="radio" value="0" id="defaultCheck1" checked="checked">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Hide
+                                </label>
+                            </div>
+                            <div class="form-check col-lg-6">
+                                <input class="form-check-input" asp-for="status" type="radio" value="1" id="defaultCheck2">
+                                <label class="form-check-label" for="defaultCheck2">
+
+                                    Show
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 pl-3 pr-3">
+                    <div class="form-group">
+                        <label asp-for="note" class="control-label"></label>
+                        <textarea asp-for="note" class="form-control" rows="2"></textarea>
+                        <span asp-validation-for="note" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="hospitaltreatment" class="control-label"></label>
+                        <input asp-for="hospitaltreatment" class="form-control" />
+                        <span asp-validation-for="hospitaltreatment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="address" class="control-label"></label>
+                        <textarea asp-for="address" class="form-control" rows="2"></textarea>
+                        <span asp-validation-for="address" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 row mt-3">
+                    <button type="submit" style="margin:auto" class="btn btn-info">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

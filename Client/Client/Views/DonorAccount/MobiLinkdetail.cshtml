@@ -1,0 +1,78 @@
+﻿@model Client.Models.MobiLinkRequestModel
+
+@{
+    ViewData["Title"] = "MobiLinkdetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <hr />
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="text-center mb-0"> Requests Detail @ViewBag.Error</h4>
+            </div>
+            <hr class="col-12" />
+            <div class="col-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.fullname)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.fullname)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.address)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.address)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.email)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.email)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.phone)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.phone)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-6">
+                <dl class="dl-horizontal">
+
+                   
+                    <dt>
+                        @Html.DisplayNameFor(model => model.note)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.note)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.hospitaltreatment)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.hospitaltreatment)
+                    </dd>
+                   
+                    <dt>
+                        @Html.DisplayNameFor(model => model.bloodName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.bloodName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.expected_date)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.expected_date)
+                    </dd>
+
+                </dl>
+            </div>
+            </div>
+        </div></section>

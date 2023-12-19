@@ -1,0 +1,143 @@
+﻿@model Client.Models.DonationRequestModelB
+
+@{
+    ViewData["Title"] = "rqDetail";
+    Layout = "~/Areas/BloodBankManager/Views/Shared/Admin.cshtml";
+}
+<div class="row pt-2 m-0">
+    <div class="col-12">
+        <h3 class="text-center m-0"> Request Detail</h3>
+    </div>
+    <hr class="col-12" style="color:white" />
+    <div class="col-6">
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.donorName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.donorName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.donorEmail)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.donorEmail)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.donorPhone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.donorPhone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.donordAge)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.donordAge)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.donorBirthday)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.donorBirthday)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.donorGender)
+            </dt>
+            @if (Model.donorGender == true)
+            {
+                <dd>
+                    Male
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    Female
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.donorAddress)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.donorAddress)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.donorWeight)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.donorWeight)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-6">
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.amount)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.amount) (ml)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.note)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.note)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
+            @if (Model.status == 0)
+            {
+                <dd style="color:yellow;font-weight:bold;">
+                    Unconfirmed
+                </dd>
+            }
+            else if (Model.status == 1)
+            {
+                <dd style="color:green;font-weight:bold;">
+                    Acept
+                </dd>
+            }
+            else
+            {
+                <dd style="color:red;font-weight:bold;">
+                    Denie
+                </dd>
+            }
+
+
+           
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.donorBloodName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.donorBloodName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.expected_date)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.expected_date)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.create_at)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.create_at)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.update_at)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.update_at)
+            </dd>
+        </dl>
+    </div>
+   
+</div>
+

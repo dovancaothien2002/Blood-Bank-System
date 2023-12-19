@@ -1,0 +1,70 @@
+﻿@model Client.Models.MobiLinkRequestModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/BloodBankManager/Views/Shared/Admin.cshtml";
+}
+
+<hr />
+<h4 class="text-center "> MobiLink Notification detail</h4>
+<hr />
+<div>
+   
+
+    <dl class="dl-horizontal">
+      
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.fullname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fullname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.hospitaltreatment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.hospitaltreatment)
+        </dd>
+      
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.bloodName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.bloodName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.expected_date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.expected_date)
+        </dd>
+        
+    </dl>
+</div>
+

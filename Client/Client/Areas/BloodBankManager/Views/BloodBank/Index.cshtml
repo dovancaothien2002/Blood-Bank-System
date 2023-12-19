@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Client.Models.BloodStockModelB>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/BloodBankManager/Views/Shared/Admin.cshtml";
+}
+
+
+<div class="container pt-3">
+    <h2 class="text-center">Blood Bank Managerment</h2>
+    <hr />
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 pl-2 pr-2 pb-2">
+                <div class="card p-3 mb-2" style=" border:1px solid white;background-color:white;color:black;">
+                    <div class="row">
+
+                        <div class="col-8">
+                            <h1>  @Html.DisplayFor(modelItem => item.bloodName)</h1>
+                            @if (item.quantity > 0)
+                            {
+                                <p class="mb-0">Available  : <span style="font-weight:bold;color:green;font-size: 20px;">@Html.DisplayFor(modelItem => item.quantity) </span> (ml)</p>
+                            }
+                            else
+                            {
+                                <p class="mb-0">Available  : <span style="font-weight:bold;color:red;font-size: 20px;">@Html.DisplayFor(modelItem => item.quantity) </span> (ml)</p>
+                            }
+
+                        </div>
+                        <div class="col-4"><img width="100%" src="~/images/blood.png" /></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class=" row">
+
+        <h5 style="text-align:center" class="col-12"> Add new blood group</h5>
+        <div class="col-3 row" style="margin:auto">
+
+            <div class="col-9">
+                <select asp-items="@ViewBag.listBlood" id="bloods" class="col-lg-12 p-2">
+                    <option selected="selected" value="0">Select Blood Group </option>
+                </select>
+            </div>
+            <div class="btn btn-success col-3" id="btnAdd">
+                <a style="color:white;">Add</a>
+            </div>
+            <p style="color:green;margin:auto;">@ViewBag.result</p>
+        </div>
+
+
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-3 ">
+            <div class="card p-3" style=" border:1px solid white;background-color:white;color:black;">
+                <div class="row">
+                    <div class="col-8">
+                        <h5>New Requests  </h5>
+                        <h2 class="mb-0" style="font-weight:bold;color:black;"> @ViewBag.newBRq</h2>
+                    </div>
+                    <div class="col-4 mt-2">
+                        <img width="80%" src="~/images/document.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 ">
+            <div class="card p-3" style=" border:1px solid white;background-color:white;color:black;">
+                <div class="row">
+                    <div class="col-8">
+                        <h5>Total Requests  </h5>
+                        <h2 class="mb-0" style="font-weight:bold;color:black;"> @ViewBag.totalBRq</h2>
+                    </div>
+                    <div class="col-4 mt-2">
+                        <img width="80%" src="~/images/list.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 ">
+            <div class="card p-3" style=" border:1px solid white;background-color:white;color:black;">
+                <div class="row">
+                    <div class="col-8">
+                        <h5>New Donations  </h5>
+                        <h2 class="mb-0" style="font-weight:bold;color:black;"> @ViewBag.newDRq</h2>
+                    </div>
+                    <div class="col-4 mt-2">
+                        <img width="80%" src="~/images/document.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 ">
+            <div class="card p-3" style=" border:1px solid white;background-color:white;color:black;">
+                <div class="row">
+                    <div class="col-8">
+                        <h5>Total Donations  </h5>
+                        <h2 class="mb-0" style="font-weight:bold;color:black;"> @ViewBag.totalDRq</h2>
+                    </div>
+                    <div class="col-4 mt-2">
+                        <img width="80%" src="~/images/list.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#bloods').on('change', function () {
+            var bId = $(this).children(":selected").attr("value");
+            if (bId == 0) {
+                $('#btnAdd').html('<a>Add</a>');
+            } else {
+                $('#btnAdd').html('<a href="/BloodBankManager/BloodBank/Addbloobstock/?bId=' + bId + '" style="color:white;">Add</a>');
+            }
+            
+        });
+
+    </script>

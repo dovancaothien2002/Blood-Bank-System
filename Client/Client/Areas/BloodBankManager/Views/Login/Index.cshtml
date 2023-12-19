@@ -1,0 +1,81 @@
+﻿@model Client.Areas.BloodBankManager.Models.Login
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login cPanel</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="" class="h1">Blood Bank</a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg"> <span style="color:red"> @TempData["err"]</span></p>
+               
+                <form action="" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email..." data-val="true" data-val-required="&#x110;&#x1ECB;a ch&#x1EC9; email kh&#xF4;ng &#x111;&#x1B0;&#x1EE3;c &#x111;&#x1EC3; tr&#x1ED1;ng" id="Email" name="Email" value="">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <p> <span style="color:red" class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span></p>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password..." data-val="true" data-val-required="M&#x1EAD;t kh&#x1EA9;u kh&#xF4;ng &#x111;&#x1B0;&#x1EE3;c &#x111;&#x1EC3; tr&#x1ED1;ng" id="Password" name="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <p> <span style="color:red" class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span></p>
+                    <div class="row">
+                        @*<div class="col-8">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="remember" data-val="true" data-val-required="The Remember field is required." name="Remember" value="true">
+                                    <label for="remember">
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>*@
+                        <!-- /.col -->
+                        <div class="col-4"  style="margin:auto">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8PxXCnO2-Q1JvKBCV_Ku4MQrDldPlwCw-3w0Z3kbJiC7pUmMzWfRS4MQigA3pdaAgp1dg3AbhH-9xytQugp7BJaEoxU9Q4hAdzRCl0jqxnvGfZFtRIlIn0QeLF3xQXZsvDKuxqJ1RBT-DyNZpO8i4M4" /><input name="Remember" type="hidden" value="false">
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</body>
+</html>
+
+
+

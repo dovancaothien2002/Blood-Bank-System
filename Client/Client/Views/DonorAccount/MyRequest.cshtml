@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Client.Models.RequestToDonorModel>
+
+@{
+    ViewData["Title"] = "MyRequest";
+}
+
+<section>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="text-center mb-3">Blood Requests @ViewBag.Error</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                No.
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.fullname)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.gender)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.phone)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.amount)
+                            </th>
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.status)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.expected_date)
+                            </th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 1;}
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fullname)
+                                </td>
+
+                                @if (item.gender == true)
+                                {
+                                    <td>
+                                        @Html.Raw("Male")
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Html.Raw("Female")
+                                    </td>
+                                }
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.amount)
+                                </td>
+
+
+                                @if (item.status == 1)
+                                {
+                                    <td style="color:#28a745;font-weight:bold;">
+                                        @Html.Raw("Accept")
+                                    </td>
+                                }
+                                else if (item.status == 2)
+                                {
+                                    <td style="color:#dc3545;font-weight:bold;">
+                                        @Html.Raw("Deny")
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a class="btn btn-success" href="/DonorAccount/Confirm/?rqId=@Html.DisplayFor(modelItem => item.rtdId)&type=1"  style="color:white;">Accept</a>
+                                        <a class="btn btn-danger" href="/DonorAccount/Confirm/?rqId=@Html.DisplayFor(modelItem => item.rtdId)&type=2"  style="color:white;">Denie</a>
+                                    </td>
+                                }
+
+                                <td>
+                                    @Html.ValueFor(modelItem => item.expected_date, "{0:dd/MM/yyyy}")
+                                </td>
+                                <td>
+                                    <a asp-controller="DonorAccount" asp-action="RequestDetail" style="color:black;" asp-route-Id="@Html.ValueFor(modelItem => item.rtdId)">Details</a>
+                                </td>
+
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+   
+</section>
+<script>
+    function Confirm(rqId, type) {
+        if (type == 1) {
+            $.ajax({
+                url: "/DonorAccount/Confirm/?rqId=" + rqId + "&type=" + 1,
+                type: "get",
+                contentType: "html",
+                success: function (response) {
+
+
+                }
+            });
+        } else {
+            $.ajax({
+                url: "/DonorAccount/Confirm/?rqId=" + rqId + "&type=" + 2,
+                type: "get",
+                contentType: "html",
+                success: function (response) {
+
+
+                }
+            });
+        }
+       
+    }
+</script>
+

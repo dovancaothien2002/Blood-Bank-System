@@ -1,0 +1,125 @@
+﻿
+@model X.PagedList.IPagedList<Client.Models.RequestToBloodBankModel>
+@using X.PagedList.Mvc.Core;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/BloodBankManager/Views/Shared/Admin.cshtml";
+}
+<div class="row pt-2">
+    <div class="col-12">
+        <h3 class="text-center">List Blood Request </h3>
+    </div>
+
+    <form asp-action="" method="get" class="form-inline" style="margin-bottom:20px">
+        <div class="form-group">
+            <label class="sr-only" for="">label</label>
+            <input class="form-control" name="name" placeholder="Search By Pateint Name...">
+        </div>
+        <button type="submit" class="btn btn-default mr-1"><i class="fas fa-search"></i></button>
+    </form>
+
+    <hr />
+    <div class="col-12">
+        <h5 class="text-center" style="color:red">@ViewBag.Error </h5>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().fullname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().address)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().amount)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().status)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().bloodName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().expected_date)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int i = 1;}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.amount)
+                    </td>
+
+
+                    <td>
+                        <a class="btn btn-success" href="/BloodBankManager/BloodRequest/Confirm/?rqId=@Html.DisplayFor(modelItem => item.rtbkId)&type=1" style="color:white;">Accept</a>
+                        <a class="btn btn-danger" href="/BloodBankManager/BloodRequest/Confirm/?rqId=@Html.DisplayFor(modelItem => item.rtbkId)&type=2" style="color:white;">Denie</a>
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bloodName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.expected_date)
+                    </td>
+
+                    <td>
+                        <a asp-action="rqDetail" asp-controller="BloodRequest" asp-area="BloodBankManager" asp-route-Id="@item.rtbkId" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+    <div style="text-align:center">
+        <h2 class="text-danger">
+            @TempData["errD"]
+        </h2>
+        <h2 class="text-danger">
+            @TempData["err"]
+        </h2>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { name = @ViewBag.key,page = page    }),
+           new PagedListRenderOptions
+           {
+               LiElementClasses = new string[] { "page-item" },
+               PageClasses = new string[] { "page-link" }
+
+           })
+    </div>
+</div>
+

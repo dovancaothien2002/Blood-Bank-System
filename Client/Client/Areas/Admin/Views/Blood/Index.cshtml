@@ -1,0 +1,93 @@
+﻿@*@model IEnumerable<Client.Models.BloodModel>*@
+@model X.PagedList.IPagedList<Client.Models.BloodModel>
+@using X.PagedList.Mvc.Core;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+
+<hr />
+<h4 style="text-align:center;">List of blood group</h4>
+
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+    <a asp-action="Create" class="btn btn-sm btn-success " style="float:right">Add new</a>
+
+</p>
+
+<form asp-action="" method="get" class="form-inline row" style="margin-bottom:20px">
+    <div class="form-group">
+        <label class="sr-only" for="">label</label>
+        <input class="form-control" name="name" placeholder="Search By Blood Name...">
+    </div>
+    <button type="submit" class="btn btn-default mr-1"><i class="fas fa-search"></i></button>
+    <div class="col-8">
+        <h4 class="text-danger  text-center">
+            @TempData["Error"]
+        </h4>
+        <h4 class="text-success  text-center">
+            @TempData["Ok"]
+        </h4>
+    </div>
+    
+   
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().bloodId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().bloodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().create_at)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().update_at)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bloodId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bloodName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.create_at)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.update_at)
+                </td>
+                <td>
+
+                    <a asp-action="Edit" asp-route-id="@item.bloodId" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.bloodId" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.bloodId" class="btn btn-sm btn-danger" onclick="return confirm('Are you ok?')"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div style="text-align:center">
+    <h2 class="text-danger">
+        @TempData["errD"]
+    </h2>
+    <h2 class="text-danger">
+        @TempData["err"]
+    </h2>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { name = @ViewBag.key,page = page    }),
+       new PagedListRenderOptions
+       {
+           LiElementClasses = new string[] { "page-item" },
+           PageClasses = new string[] { "page-link" }
+
+       })
+</div>

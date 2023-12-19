@@ -1,0 +1,83 @@
+﻿@model Client.Models.BloodBankModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+
+<hr />
+<h4 style="text-align:center;">Detail Blood bank</h4>
+<hr />
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bbId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.bbId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.bbName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.bbName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.calendar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.calendar)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.hotline)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.hotline)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.create_at)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.update_at)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.update_at)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.districtId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.districtId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.districtName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.districtName)
+        </dd>
+    </dl>
+</div>
+

@@ -1,0 +1,44 @@
+﻿@model Client.Models.Blood
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+
+<hr />
+<h4 style="text-align:center;">Edit blood group</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="bloodId" class="form-control" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="bloodName" class="control-label"></label>
+                <input asp-for="bloodName" class="form-control" />
+                <span asp-validation-for="bloodName" class="text-danger"></span>
+                <span class="text-danger">
+                    @TempData["err"]
+                </span>
+            </div>
+            <div class="form-group">
+                <input asp-for="create_at" class="form-control" type="hidden" />
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="update_at" class="control-label"></label>
+                    <input asp-for="update_at" class="form-control" />
+                    <span asp-validation-for="update_at" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

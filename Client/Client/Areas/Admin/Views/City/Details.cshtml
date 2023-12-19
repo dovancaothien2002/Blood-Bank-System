@@ -1,0 +1,43 @@
+﻿@model Client.Models.CityModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+<hr />
+<h4 style="text-align:center;">City detail</h4>
+<hr />
+
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cityId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cityId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cityName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.create_at)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.create_at)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.update_at)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.update_at)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.cityId" class="btn btn-sm btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-sm btn-success">Back to list</a>
+</div>

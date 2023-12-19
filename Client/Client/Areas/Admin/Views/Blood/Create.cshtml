@@ -1,0 +1,47 @@
+﻿@model Client.Models.Blood
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Admin.cshtml";
+}
+
+<hr />
+<h4 style="text-align:center;">Add new blood group</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="bloodId" class="control-label"></label>
+                    <input asp-for="bloodId" class="form-control" />
+                    <span asp-validation-for="bloodId" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="bloodName" class="control-label"></label>
+                <input asp-for="bloodName" class="form-control" />
+                <span asp-validation-for="bloodName" class="text-danger"></span>
+                <span class="text-danger">
+                    @TempData["err"]
+                </span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="create_at" class="control-label"></label>
+                    <input asp-for="create_at" class="form-control" />
+                    <span asp-validation-for="create_at" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="update_at" class="control-label"></label>
+                    <input asp-for="update_at" class="form-control" />
+                    <span asp-validation-for="update_at" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
